@@ -5,13 +5,15 @@ Modular base for a first-person 3D game with interactive tiles and unique invent
 
 ## Includes
 
-- Tile interaction system *- with customisable behaviors*
+- Tile interaction system *- with customisable behaviors ([see showcase](#interactions-showcase))*
 - Unique inventory system *- [click for details](#inventory-system)*
 - Draggable items *- with smooth pickup/idle/destroy animations*
 - Pixelation shader *- for easy retro visuals*
 - Simple first-person controls
 - Basic progression save system
 - Clean signal-based code
+
+[Quick start](#quick-start)
 
 ## Interactions Showcase
 
@@ -38,22 +40,19 @@ All the items stored in inventory will slowly float in circle on top of the play
 You can hide the inventory when its not active, so the items dont abstract the sky view.<br>
 And you can also lower the inventory's position for easier items access via hotkeys (just like opening the inventory).
 
-> [!NOTE]
-> When in inventory the items will remain in the "pick-up" state and animation, like if they're being dragged.
-
 > [!TIP]
-> All parameters used for the inventory logic can be easily accessed and configured at the top of the player script `/scripts/player.gd`.
+> All parameters used for the inventory logic can be found and configured at the top of the player script (`/scripts/player.gd`).
 
 ## Why Use This?
 - Already handles the annoying stuff (item management, save system)
-- Clean signal-based architecture (means easy custom tile behaviors)
+- Clean signal-based architecture (means easy extension and custom behaviors)
 - All core systems are implemented and tested
 - Easy to reskin for your own game
 
 ## Quick Start
 
 1. Clone this repository
-2. Open in Godot 3.x (tested with 3.5)
+2. Open in Godot 4.x (tested with 4.3)
 3. Run `scenes/demo.tscn` to see the demo level
 
 To create new tile types:
