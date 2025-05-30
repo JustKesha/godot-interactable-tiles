@@ -5,32 +5,40 @@ Modular base for a first-person Godot 3D game with customizable interactive tile
 *Feel free to use as a starting point for your project!*
 
 - [Contents](#includes)
-- [Showcase](#interactions-showcase)
+- [Showcase](#simple-example)
 - [Inventory](#inventory-system)
 - [Quick start](#quick-start)
 
 ## Includes
 
-- Tile interaction system *- with fully customisable behaviors ([simple example](#interactions-showcase))*
-- Unique inventory system with smooth animations *([details](#inventory-system))*
+- Interactive tiles system *- with fully customisable behaviors ([simple example](#interactions-showcase))*
+- Unique inventory system - *with smooth animations ([details](#inventory-system))*
 - Pixelation shader *- for easy retro visuals*
 - Simple first-person controls
 - Basic progression save system
 - Clean signal-based code
 
-## Interactions Showcase
+## Simple Example
 
-Here's a very basic example of what you can do with just one type of custom tile behavior,<br>
-This tile will destroy any objects that activate it:
+Here's a very basic example of what you can do with just one type of custom tile behavior, this tile will destroy any objects that activate it:
 
 | GIF | Desc | Potential Uses |
 |-|-|-|
 | ![Single activation](preview/one-cube.gif) | Object is dropped on a tile to activate it → gets destroyed by the tile's custom behavior script | "Lava" tiles that kill player unless they sacrifice an item |
 | ![Queue destruction](preview/multiple-cubes.gif) | Multiple objects destroyed one-by-one | Pressure plates that stay active while items remain, like a fire burning until out of fuel |
-| ![Timed activation](preview/timer.gif) | Tile is activated via script and deactivated later, which makes it switch focus to the object on top - destroying it | Temporary bridges/gates that disappear/close after time |
-| ![Forced state](preview/set-to-pressed.gif) | Tile is forced into activated state via script → when first item is removed the tile updates and notices the second object on top - destroying it | Let the player choose to keep one of two bonus items / Create paths that close after the player walked on them (like one-way doors or no-retrace mazes) |
+| ![Timed activation](preview/timer.gif) | Tile is held activated using a script → script stops → object on top is destroyed | Temporary bridges/gates that disappear/close after time |
+| ![Forced state](preview/set-to-pressed.gif) | Tile is forced into activated state via script → first object is removed → as a result, tile updates → item on top gets destroyed | Let the player choose to keep one of two bonus items / Create paths that close after the player walked on them (like one-way doors or no-retrace mazes) |
 
-> [!IMPORTANT]
+Script for the shown tile behavior:
+```js
+extends Tile
+
+func _on_just_pressed(object_pressing: Object) -> void:
+	object_pressing.queue_free()
+	$ActivationParticles.emitting = true
+```
+
+> [!NOTE]
 > Tiles store references to all the objects on top of them (which you can use for custom behaviors). But by default only one object at a time is considered to be the one currently activating the tile (holding it down). 
 
 ## Inventory System
@@ -44,7 +52,7 @@ You can hide the inventory when its not active, so the items dont abstract the s
 And you can also lower the inventory's position for easier items access via hotkeys (just like opening the inventory).
 
 > [!TIP]
-> All parameters used for the inventory logic can be found and configured at the top of the player script (`/scripts/player.gd`).
+> All parameters used for the inventory logic can be found & changed at the top of the `/scripts/player.gd` script.
 
 ## Why Use This?
 - Already handles the annoying stuff (item management, save system)
