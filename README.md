@@ -1,19 +1,22 @@
-# Godot 3D - Tile Interactions Demo
+# 🕹️ Godot 3D - Interactive Tiles
 
-Modular base for a first-person 3D game with interactive tiles and unique inventory mechanics.  
-*(Not perfect but functional - feel free to use as a starting point!)*
+Modular base for a first-person Godot 3D game with customizable interactive tiles and unique inventory mechanics. 
+
+*Feel free to use as a starting point for your project!*
+
+- [Contents](#includes)
+- [Showcase](#interactions-showcase)
+- [Inventory](#inventory-system)
+- [Quick start](#quick-start)
 
 ## Includes
 
-- Tile interaction system *- with customisable behaviors ([see showcase](#interactions-showcase))*
-- Unique inventory system *- [click for details](#inventory-system)*
-- Draggable items *- with smooth pickup/idle/destroy animations*
+- Tile interaction system *- with fully customisable behaviors ([simple example](#interactions-showcase))*
+- Unique inventory system with smooth animations *([details](#inventory-system))*
 - Pixelation shader *- for easy retro visuals*
 - Simple first-person controls
 - Basic progression save system
 - Clean signal-based code
-
-[Quick start](#quick-start)
 
 ## Interactions Showcase
 
