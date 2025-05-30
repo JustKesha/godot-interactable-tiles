@@ -1,5 +1,4 @@
 # 🕹️ Godot 3D - Interactive Tiles
-
 Modular base for a first-person Godot 3D game with customizable interactive tiles and unique inventory mechanics. 
 
 *Feel free to use as a starting point for your project!*
@@ -10,7 +9,6 @@ Modular base for a first-person Godot 3D game with customizable interactive tile
 - [Quick start](#quick-start)
 
 ## Includes
-
 - Interactive tiles system *- with fully customisable behaviors ([simple example](#interactions-showcase))*
 - Unique inventory system - *with smooth animations ([details](#inventory-system))*
 - Pixelation shader *- for easy retro visuals*
@@ -19,17 +17,16 @@ Modular base for a first-person Godot 3D game with customizable interactive tile
 - Clean signal-based code
 
 ## Simple Example
-
 Here's a very basic example of what you can do with just one type of custom tile behavior, this tile will destroy any objects that activate it:
 
 | GIF | Desc | Potential Uses |
 |-|-|-|
-| ![Single activation](preview/one-cube.gif) | Object is dropped on a tile to activate it → gets destroyed by the tile's custom behavior script | "Lava" tiles that kill player unless they sacrifice an item |
-| ![Queue destruction](preview/multiple-cubes.gif) | Multiple objects destroyed one-by-one | Pressure plates that stay active while items remain, like a fire burning until out of fuel |
+| ![Activation](preview/one-cube.gif) | Object is dropped on a tile to activate it → gets destroyed by the tile's custom behavior script | "Lava" tiles that kill player unless they sacrifice an item |
+| ![Queue activation](preview/multiple-cubes.gif) | Multiple objects destroyed one-by-one | Pressure plates that stay active while items remain, like a fire burning until out of fuel |
 | ![Timed activation](preview/timer.gif) | Tile is held activated using a script → script stops → object on top is destroyed | Temporary bridges/gates that disappear/close after time |
-| ![Forced state](preview/set-to-pressed.gif) | Tile is forced into activated state via script → first object is removed → as a result, tile updates → item on top gets destroyed | Let the player choose to keep one of two bonus items / Create paths that close after the player walked on them (like one-way doors or no-retrace mazes) |
+| ![Forced activation](preview/set-to-pressed.gif) | Tile is forced into activated state via script → first object is removed → as a result, tile updates → item on top gets destroyed | Let the player choose to keep one of two bonus items / Create paths that close after the player walked on them (like one-way doors or no-retrace mazes) |
 
-Script for the shown tile behavior:
+Script to achieve the shown tile behavior:
 ```js
 extends Tile
 
@@ -39,20 +36,35 @@ func _on_just_pressed(object_pressing: Object) -> void:
 ```
 
 > [!NOTE]
-> Tiles store references to all the objects on top of them (which you can use for custom behaviors). But by default only one object at a time is considered to be the one currently activating the tile (holding it down). 
+> Tiles store references to all the objects on top of them (which you can use for custom behaviors). But by default only one object at a time is considered to be the one currently activating the tile. 
+
+### Demo tiles
+- Blue - no special effects
+- Green - disappears after one use
+- Yellow - saves the game
+- Red - kills player & destroys items
 
 ## Inventory System
+![Inventory system showcase](preview/inventory-showcase.gif)<br>
+You can store items in inventory by:
 
-The items can be stored into inventory by:
-1. Action hotkeys *(E by default, when hovering onto an item in range)*
-2. Being drag & dropped in *(by default above player's head)*
+1. Hovering & Clicking a hotkey
+2. Drag & dropping them in
 
-All the items stored in inventory will slowly float in circle on top of the player (and smoothly follow them).<br>
-You can hide the inventory when its not active, so the items dont abstract the sky view.<br>
-And you can also lower the inventory's position for easier items access via hotkeys (just like opening the inventory).
+All items stored in inventory will slowly float in a circle above the player.<br>
+As the player moves, the items will slowly follow them with a changeable delay.
+
+You can hide inventory when its not active, to not abstract the sky view.<br>
+And you can lower it when you need to look at your items.
 
 > [!TIP]
-> All parameters used for the inventory logic can be found & changed at the top of the `/scripts/player.gd` script.
+> All 15 inventory parameters can be found & changed at the top of the `/scripts/player.gd` script.
+
+### Demo controls
+- E - collect
+- Tab - show inventory
+- R - toggle inventory
+- Lmk - drag
 
 ## Why Use This?
 - Already handles the annoying stuff (item management, save system)
@@ -61,7 +73,6 @@ And you can also lower the inventory's position for easier items access via hotk
 - Easy to reskin for your own game
 
 ## Quick Start
-
 1. Clone this repository
 2. Open in Godot 4.x (tested with 4.3)
 3. Run `scenes/demo.tscn` to see the demo level
